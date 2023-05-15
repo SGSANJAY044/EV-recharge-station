@@ -5,8 +5,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const {connectdb} = require('./connect');
-const usercontroller = require('./controller/usercontroller');
-
+const userRoutes = require('./routes/userroute')
 app=express()
 
 dotenv.config();
@@ -16,12 +15,12 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.post('/signin',usercontroller.signup)
-app.get('/login',usercontroller.login)
-app.get('/getuser',usercontroller.get_user)
-app.get('/getalluser',usercontroller.getAllUsers)
-app.put('/updateuser',usercontroller.updateuser)
-app.delete('/deleteuser',usercontroller.deleteuser)
+
+app.get('/api/',(req,res)=>{
+    res.send("FreelancingForum")
+    })
+    
+app.use('/api/user', userRoutes)
 connectdb()
 .then(() => {
     console.log('Db connected')})
