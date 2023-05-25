@@ -6,6 +6,8 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const {connectdb} = require('./connect');
 const userRoutes = require('./routes/userroute')
+const adminRoutes= require('./routes/adminroute')
+const stationRoutes=require('./routes/stationroute')
 app=express()
 
 dotenv.config();
@@ -21,6 +23,8 @@ app.get('/api/',(req,res)=>{
     })
     
 app.use('/api/user', userRoutes)
+app.use('/api/admin', adminRoutes)
+app.use('/api/station', stationRoutes)
 connectdb()
 .then(() => {
     console.log('Db connected')})

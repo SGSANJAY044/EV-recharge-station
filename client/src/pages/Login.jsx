@@ -15,7 +15,10 @@ function Login() {
           .then(function (response) {
             console.log(response);
             if(response?.data?.user?.email==email){
-                navigate('/home')
+                if(response?.data?.user?.isAdmin)
+                navigate('/adminhome')
+                else
+                navigate('/userhome')
               }
         })
         .catch(function (error) {

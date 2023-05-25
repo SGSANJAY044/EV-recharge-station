@@ -10,5 +10,4 @@ router.get('/getalluser',usercontroller.getAllUsers)
 router.put('/updateuser',usercontroller.updateuser)
 router.delete('/deleteuser',usercontroller.deleteuser)
 
-
 module.exports = router;

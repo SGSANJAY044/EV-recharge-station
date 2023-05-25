@@ -19,4 +19,4 @@ default :Date.now
 }
 })
 
-module.exports = mongoose.model('Admin', adminSchema);
+module.exports.Admin = mongoose.model('Admin', adminSchema);

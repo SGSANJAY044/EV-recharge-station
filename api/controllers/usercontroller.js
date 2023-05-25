@@ -1,4 +1,5 @@
 const {User}=require('../model/User');
+const {Admin}=require('../model/Admin')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 
@@ -26,7 +27,7 @@ module.exports.login = async (req, res) => {
     try {
     var existinguser = await User.findOne({ email:email })
     if (!existinguser) {
-    existinguser = await Admin.findOne({ email:email })
+    existinguser= await Admin.findOne({ email:email })
     if (!existinguser) {
     console.log("User not found...");
     return res.status(404).json("User not found...")
